@@ -13,6 +13,7 @@ export default function Tree() {
   ) => {
     event.preventDefault();
     const target = event.target as SVGElement;
+    console.log(target.id);
     // valid id
     const links = [
       "AEROGEL",
@@ -34,7 +35,7 @@ export default function Tree() {
     <Box>
       <svg
         onClick={handleSvgClick}
-        width="502"
+        width="500"
         height="400"
         viewBox="0 0 712 700"
         fill="none"
@@ -445,7 +446,7 @@ export default function Tree() {
               fill="#631C1C"
             />
           </g>
-          <g id="metamaterials" cursor="pointer">
+          <g id="metamaterials">
             <path
               id="Vector_81"
               d="M265.917 211.202V77.8033H452.275V211.202H265.917Z"
@@ -459,7 +460,9 @@ export default function Tree() {
             <text
               id="METAMATERIALS"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
@@ -467,8 +470,17 @@ export default function Tree() {
                 METAMATERIALS
               </tspan>
             </text>
+            <rect
+              id="METAMATERIALS"
+              x="263"
+              y="75"
+              width="192"
+              height="141"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
-          <g id="aerogel" cursor="pointer">
+          <g id="aerogel">
             <path
               id="Vector_83"
               d="M505.667 340.702V207.303H692.025V340.702H505.667Z"
@@ -482,7 +494,9 @@ export default function Tree() {
             <text
               id="AEROGEL"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
@@ -490,8 +504,17 @@ export default function Tree() {
                 AEROGEL
               </tspan>
             </text>
+            <rect
+              id="AEROGEL"
+              x="503"
+              y="205"
+              width="192"
+              height="141"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
-          <g id="graphene" cursor="pointer">
+          <g id="quantum-dots">
             <path
               id="Vector_85"
               d="M34.0425 347.702V214.303H220.4V347.702H34.0425Z"
@@ -503,18 +526,29 @@ export default function Tree() {
               fill="#684F37"
             />
             <text
-              id="GRAPHENE"
+              id="QUANTUM DOTS"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
-              <tspan x="87.1872" y="293">
-                GRAPHENE
+              <tspan x="64.0709" y="293">
+                QUANTUM DOTS
               </tspan>
             </text>
+            <rect
+              id="QUANTUMDOT"
+              x="31"
+              y="212"
+              width="192"
+              height="141"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
-          <g id="self" cursor="pointer">
+          <g id="graphene">
             <path
               id="Vector_87"
               d="M2.54248 555.952V422.553H188.9V555.952H2.54248Z"
@@ -526,18 +560,28 @@ export default function Tree() {
               fill="#684F37"
             />
             <text
-              id="SELFHEALING"
+              id="GRAPHENE"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
-              <tspan x="38.4303" y="493.875">
+              <tspan x="52.1872" y="493.875">
                 GRAPHENE
               </tspan>
             </text>
+            <rect
+              id="GRAPHENE"
+              y="420"
+              width="192"
+              height="141"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
-          <g id="piezoelectric" cursor="pointer">
+          <g id="piezoelectric">
             <path
               id="Vector_89"
               d="M508.689 566.925H692.503V436.078H508.689V566.925Z"
@@ -551,7 +595,9 @@ export default function Tree() {
             <text
               id="PIEZOELECTRIC"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
@@ -559,8 +605,17 @@ export default function Tree() {
                 PIEZOELECTRIC
               </tspan>
             </text>
+            <rect
+              id="PIEZOELECTRIC"
+              x="505"
+              y="433"
+              width="192"
+              height="138"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
-          <g id="quantum" cursor="pointer">
+          <g id="self-healing">
             <path
               id="Vector_91"
               d="M266 494.503V356H457.443V494.503H266ZM273.631 363.656V486.847H449.813V363.656H273.631Z"
@@ -568,19 +623,30 @@ export default function Tree() {
             />
             <path id="Vector_92" d="M273 364H452V487H273V364Z" fill="#FAFAFA" />
             <text
-              id="QUANTUM DOTS"
+              id="SELF-HEALING MATERIALS"
               fill="#151515"
+              xmlSpace="preserve"
               font-family="Quicksand"
+              font-size="16"
               font-weight="500"
               letter-spacing="0.03em"
             >
-              <tspan x="295.071" y="431.875">
-                SELF-HEALING
+              <tspan x="304.43" y="420.875">
+                SELF-HEALING&#10;
               </tspan>
-              <tspan x="295.071" y="453.875">
+              <tspan x="317.228" y="440.875">
                 MATERIALS
               </tspan>
             </text>
+            <rect
+              id="SELFHEALING"
+              x="266"
+              y="356"
+              width="191"
+              height="139"
+              fill="#D9D9D9"
+              fill-opacity="0.02"
+            />
           </g>
         </g>
       </svg>

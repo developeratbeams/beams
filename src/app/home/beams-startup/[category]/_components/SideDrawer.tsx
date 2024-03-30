@@ -47,11 +47,12 @@ export default function SideDrawer() {
         bg={"white"}
         position={"fixed"}
         zIndex={11}
-        top={"5px"}
+        top={"10px"}
         left={"10px"}
         aria-label="button"
         onClick={onOpen}
-        icon={<AiFillAppstore />}
+        rounded={"full"}
+        icon={<AiFillAppstore size={"40px"} rounded="full" />}
       />
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
@@ -478,9 +479,9 @@ export default function SideDrawer() {
                       fill="#631C1C"
                     />
                   </g>
-                  <g id="aerogel" cursor="pointer">
+                  <g id="metamaterials">
                     <path
-                      id="AEROGEL"
+                      id="Vector_81"
                       d="M265.917 211.202V77.8033H452.275V211.202H265.917Z"
                       fill="white"
                     />
@@ -490,23 +491,31 @@ export default function SideDrawer() {
                       fill="#684F37"
                     />
                     <text
-                      id="AEROGEL"
+                      id="METAMATERIALS"
                       fill="#151515"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
                       font-size="16"
-                      cursor="pointer"
                       font-weight="500"
                       letter-spacing="0.03em"
                     >
-                      <tspan x="322.451" y="150.875">
-                        AEROGEL
+                      <tspan x="293.472" y="150.875">
+                        METAMATERIALS
                       </tspan>
                     </text>
+                    <rect
+                      id="METAMATERIALS"
+                      x="263"
+                      y="75"
+                      width="192"
+                      height="141"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
-                  <g id="piezoelectric" cursor="pointer">
+                  <g id="aerogel">
                     <path
-                      id="
-              "
+                      id="Vector_83"
                       d="M505.667 340.702V207.303H692.025V340.702H505.667Z"
                       fill="white"
                     />
@@ -516,22 +525,31 @@ export default function SideDrawer() {
                       fill="#684F37"
                     />
                     <text
-                      id="PIEZOELECTRIC"
+                      id="AEROGEL"
                       fill="#151515"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
-                      cursor="pointer"
                       font-size="16"
                       font-weight="500"
                       letter-spacing="0.03em"
                     >
-                      <tspan x="537.315" y="280.875">
-                        PIEZOELECTRIC
+                      <tspan x="562.451" y="280.875">
+                        AEROGEL
                       </tspan>
                     </text>
+                    <rect
+                      id="AEROGEL"
+                      x="503"
+                      y="205"
+                      width="192"
+                      height="141"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
-                  <g id="metamaterials" cursor="pointer">
+                  <g id="quantum-dots">
                     <path
-                      id="METAMATERIALS"
+                      id="Vector_85"
                       d="M34.0425 347.702V214.303H220.4V347.702H34.0425Z"
                       fill="white"
                     />
@@ -541,22 +559,31 @@ export default function SideDrawer() {
                       fill="#684F37"
                     />
                     <text
-                      id="METAMATERIALS"
+                      id="QUANTUM DOTS"
                       fill="#151515"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
-                      cursor="pointer"
                       font-size="16"
                       font-weight="500"
                       letter-spacing="0.03em"
                     >
-                      <tspan x="64.4716" y="293">
-                        METAMATERIALS
+                      <tspan x="64.0709" y="293">
+                        QUANTUM DOTS
                       </tspan>
                     </text>
+                    <rect
+                      id="QUANTUMDOT"
+                      x="31"
+                      y="212"
+                      width="192"
+                      height="141"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
-                  <g id="graphene" cursor="pointer">
+                  <g id="graphene">
                     <path
-                      id="GRAPHENE"
+                      id="Vector_87"
                       d="M2.54248 555.952V422.553H188.9V555.952H2.54248Z"
                       fill="white"
                     />
@@ -568,8 +595,8 @@ export default function SideDrawer() {
                     <text
                       id="GRAPHENE"
                       fill="#151515"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
-                      cursor="pointer"
                       font-size="16"
                       font-weight="500"
                       letter-spacing="0.03em"
@@ -578,10 +605,18 @@ export default function SideDrawer() {
                         GRAPHENE
                       </tspan>
                     </text>
+                    <rect
+                      id="GRAPHENE"
+                      y="420"
+                      width="192"
+                      height="141"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
-                  <g id="quantum" cursor="pointer">
+                  <g id="piezoelectric">
                     <path
-                      id="QUANTUMDOT"
+                      id="Vector_89"
                       d="M508.689 566.925H692.503V436.078H508.689V566.925Z"
                       fill="white"
                     />
@@ -591,46 +626,64 @@ export default function SideDrawer() {
                       fill="#684F37"
                     />
                     <text
-                      id="QUANTUM DOTS"
+                      id="PIEZOELECTRIC"
                       fill="#151515"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
-                      cursor="pointer"
                       font-size="16"
                       font-weight="500"
                       letter-spacing="0.03em"
                     >
-                      <tspan x="535.071" y="507.875">
-                        QUANTUM DOTS
+                      <tspan x="539.315" y="507.875">
+                        PIEZOELECTRIC
                       </tspan>
                     </text>
+                    <rect
+                      id="PIEZOELECTRIC"
+                      x="505"
+                      y="433"
+                      width="192"
+                      height="138"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
-                  <g id="self" cursor="pointer">
+                  <g id="self-healing">
                     <path
                       id="Vector_91"
                       d="M266 494.503V356H457.443V494.503H266ZM273.631 363.656V486.847H449.813V363.656H273.631Z"
                       fill="#684F37"
                     />
                     <path
-                      id="SELFHEALING"
+                      id="Vector_92"
                       d="M273 364H452V487H273V364Z"
                       fill="#FAFAFA"
                     />
                     <text
                       id="SELF-HEALING MATERIALS"
                       fill="#151515"
-                      cursor="pointer"
+                      xmlSpace="preserve"
                       font-family="Quicksand"
                       font-size="16"
                       font-weight="500"
                       letter-spacing="0.03em"
                     >
-                      <tspan x="304.43" y="431.875">
+                      <tspan x="304.43" y="420.875">
                         SELF-HEALING&#10;
                       </tspan>
-                      <tspan x="317.228" y="451.875">
+                      <tspan x="317.228" y="440.875">
                         MATERIALS
                       </tspan>
                     </text>
+                    <rect
+                      id="SELFHEALING"
+                      x="266"
+                      y="356"
+                      width="191"
+                      height="139"
+                      fill="#D9D9D9"
+                      fill-opacity="0.02"
+                    />
                   </g>
                 </g>
               </svg>
