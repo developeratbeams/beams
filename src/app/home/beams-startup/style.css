@@ -1,0 +1,10 @@
+/*  css for the tree */
+text {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  
+}
+
+text:hover {
+    fill: #E64F8E; /* Change text color */ /* Slight scaling effect */
+}

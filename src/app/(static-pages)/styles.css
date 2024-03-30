@@ -1,0 +1,54 @@
+.termsandconditions {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+
+.innertermsandconditions {
+    width: 800px;
+    margin-bottom: 70px;
+}
+
+.headingterms {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.innertermsandconditions h3 {
+    margin-top: 40px;
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.innertermsandconditions p {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.innertermsandconditions ul {
+    margin-left: 40px;
+}
+
+.innertermsandconditions li {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+@media only screen and (max-width:850px) {
+    .innertermsandconditions {
+        width: 90%;
+    }
+
+    .headingterms {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 10px;
+        line-height: 40px;
+
+    }
+}

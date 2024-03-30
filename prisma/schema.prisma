@@ -1,0 +1,734 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                       String                     @id @default(uuid()) @map("_id")
+  userId                   String
+  firstName                String?
+  lastName                 String?
+  username                 String?                    @unique
+  dateOfBirth              DateTime?
+  email                    String                     @unique
+  phoneNumber              String?
+  gender                   GENDER?
+  avatar                   String?
+  bio                      String?
+  avatarDuration           DateTime?
+  avatarType               AVATARTYPE?
+  preferredCommunication   COMMUNICATION              @default(EMAIL)
+  languagePreference       LANGUAGE                   @default(ENGLISH)
+  specialachievement       String?
+  onBoarding               Boolean                    @default(false)
+  interests                String[]
+  ethnicity                String?
+  country                  String?
+  beamLevel                String?
+  grade                    String?
+  specialEducationNeeds    String?
+  adultToCommunicate       String?
+  registrationDate         DateTime                   @default(now())
+  updatedAt                DateTime                   @updatedAt
+  registrationStatus       String?
+  lastLoginDates           DateTime[]
+  totalScore               Int                        @default(0)
+  Modules                  Module?                    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  moduleId                 String?
+  ratings                  Rating[]
+  StorySubmission          StorySubmission[]
+  Parents                  Parent?                    @relation(fields: [parentId], references: [id])
+  parentId                 String?
+  favouriteModules         FavouriteModule[]
+  favouriteImage           FavouriteImage[]
+  favouriteAudio           FavouriteAudio[]
+  favouriteVideo           FavouriteVideo[]
+  vedios                   Video[]
+  audios                   Audio[]
+  profilePictureUrls       Image[]
+  socialMedia              SocialMedia?               @relation(fields: [socialMediaId], references: [id])
+  socialMediaId            String?
+  address                  Address?                   @relation(fields: [addressId], references: [id])
+  addressId                String?
+  allergies                String[]
+  QuizAttempt              QuizAttempt[]
+  AnswerToQuestion         AnswerToQuestion[]
+  FavouriteQuiz            FavouriteQuiz[]
+  School                   School?                    @relation(fields: [schoolId], references: [id])
+  schoolId                 String?
+  JigSawAttempt            JigSawAttempt[]
+  SpotTheDifferenceAttempt SpotTheDifferenceAttempt[]
+  LeaderAttempt            LeaderAttempt[]
+}
+
+model School {
+  id                                           String        @id @default(uuid()) @map("_id")
+  Students                                     User[]
+  Address                                      Address?      @relation(fields: [addressId], references: [id])
+  nameOfSchool                                 String
+  aboutSchool                                  String?
+  schoolType                                   String?
+  principalId                                  String?
+  headOfScienceAndTechnology                   String?
+  preferredCommunication                       COMMUNICATION @default(EMAIL)
+  SocialMedia                                  SocialMedia?  @relation(fields: [socialMediaId], references: [id])
+  typesOfSoftwareUsed                          String[]
+  acceptanceRatio                              Int?
+  totalNoOfStudentsInElementarySchool          Int?
+  totalNoOfStudentsInMiddleSchool              Int?
+  totalNoOfStudentsInHighSchool                Int?
+  overallGenderRatio                           Int?
+  totalNoOfTeacher                             Int?
+  totalNoOfTeachersInElementarySchool          Int?
+  totalNoOfTeachersInMiddleSchool              Int?
+  totalNoOfTeachersInHighSchool                Int?
+  teacherStudentRationInElementarySchool       Int?
+  teacherStudentRationInMiddleSchool           Int?
+  teacherStudentRationInHighSchool             Int?
+  teacher_ageRangeInElementarySchool           String?
+  teacher_ageRangeInMiddleSchool               String?
+  teacher_ageRangeInHighSchool                 String?
+  teachersGenderRatioInElementarySchool        Int?
+  teachersGenderRatioInMiddleSchool            Int?
+  teachersGenderRatioInHighSchool              Int?
+  teachers_averageExperienceInElementarySchool Int?
+  teachers_averageExperienceInMiddleSchool     Int?
+  teachers_averageExperienceInHighSchool       Int?
+  schoolStateRanking                           Int?
+  schoolNationalRanking                        Int?
+  establishedIn                                DateTime?
+  average_classSize                            Int?
+  created_at                                   DateTime      @default(now())
+  Images                                       Image[]
+  socialMediaId                                String?
+  addressId                                    String?
+}
+
+model Parent {
+  id                     String        @id @default(uuid()) @map("_id")
+  name                   String?
+  userId                 String?
+  profileUrl             String?
+  email                  String?       @unique
+  phoneNumber            String
+  preferredCommunication COMMUNICATION @default(EMAIL)
+  Address                Address?      @relation(fields: [addressId], references: [id])
+  addressId              String
+  socialMedia            SocialMedia?  @relation(fields: [socialMediaId], references: [id])
+  socialMediaId          String
+  children               User[]
+  createdAt              DateTime      @default(now())
+
+  @@index([userId])
+}
+
+model Address {
+  id            String   @id @default(uuid()) @map("_id")
+  street        String?
+  city          String?
+  stateProvince String?
+  postalCode    String?
+  country       String?
+  type          String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  User          User[]
+  Parent        Parent[]
+  School        School[]
+}
+
+model Image {
+  id                    String             @id @default(uuid()) @map("_id")
+  userId                String?
+  User                  User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moduleId              String?
+  Module                Module?            @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  questionId            String?
+  isProfile             Boolean            @default(false)
+  serialNoInModule      Int                @default(0)
+  isCoverPage           Boolean            @default(false)
+  pageNoInUserMadeStory Int                @default(0)
+  elementData           String?
+  dim                   String?
+  imageType             IMAGE_CATEGORY     @default(CHARACTER)
+  characterType         String?
+  tags                  String[]
+  category              String?
+  licenseType           String?
+  uploadedAt            DateTime           @default(now())
+  uploadedBy            USERTYPE           @default(ADMIN)
+  Story                 Story?             @relation(fields: [storyId], references: [id])
+  storyId               String?
+  url                   String
+  createdAt             DateTime           @default(now())
+  Favourites            FavouriteImage[]
+  StorySubmission       StorySubmission?   @relation(fields: [StorySubmissionId], references: [id])
+  StorySubmissionId     String?
+  startTime             DateTime           @default(now())
+  endTime               DateTime?
+  Quiz                  Quiz?              @relation(fields: [quizId], references: [id])
+  quizId                String?
+  Question              Question?          @relation(fields: [questionId], references: [id])
+  School                School?            @relation(fields: [schoolId], references: [id])
+  schoolId              String?
+  JigSaw                JigSaw?            @relation(fields: [jigSawId], references: [id])
+  jigSawId              String?
+  SpotTheDifference     SpotTheDifference? @relation(fields: [spotTheDifferenceId], references: [id])
+  spotTheDifferenceId   String?
+
+  @@index([userId])
+  @@index([questionId])
+}
+
+model Video {
+  id                    String           @id @default(uuid()) @map("_id")
+  userId                String?
+  User                  User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moduleId              String?
+  Module                Module?          @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  questionId            String?
+  serialNoInModule      Int              @default(0)
+  pageNoInUserMadeStory Int              @default(0)
+  tags                  String[]
+  category              String?
+  licenseType           String?
+  uploadedAt            DateTime         @default(now())
+  uploadedBy            USERTYPE         @default(ADMIN)
+  Story                 Story?           @relation(fields: [storyId], references: [id])
+  storyId               String?
+  url                   String
+  createdAt             DateTime         @default(now())
+  Favourites            FavouriteVideo[]
+  StorySubmission       StorySubmission? @relation(fields: [StorySubmissionId], references: [id])
+  StorySubmissionId     String?
+  startTime             DateTime         @default(now())
+  endTime               DateTime?
+  Question              Question?        @relation(fields: [questionId], references: [id])
+  Reel                  Reel?            @relation(fields: [reelId], references: [id])
+  reelId                String?
+
+  @@index([moduleId])
+  @@index([userId])
+}
+
+model Audio {
+  id                String           @id @default(uuid()) @map("_id")
+  userId            String?
+  User              User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  moduleId          String?
+  Module            Module?          @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  questionId        String?
+  serialNoInModule  Int              @default(0)
+  tags              String[]
+  category          String?
+  licenseType       String?
+  uploadedAt        DateTime         @default(now())
+  uploadedBy        USERTYPE         @default(ADMIN)
+  Story             Story?           @relation(fields: [storyId], references: [id])
+  storyId           String?
+  url               String
+  createdAt         DateTime         @default(now())
+  Favourites        FavouriteAudio[]
+  StorySubmission   StorySubmission? @relation(fields: [StorySubmissionId], references: [id])
+  StorySubmissionId String?
+  startTime         DateTime         @default(now())
+  endTime           DateTime?
+  Question          Question?        @relation(fields: [questionId], references: [id])
+
+  @@index([moduleId])
+  @@index([userId])
+}
+
+model Story {
+  id                String            @id @default(uuid()) @map("_id")
+  storyTitle        String
+  publishedAt       DateTime          @default(now())
+  userMade          Boolean           @default(false)
+  storyText         String?
+  noOfCharacter     Int?
+  storyTheme        String?
+  whenToBeLive      DateTime          @default(now())
+  ageGroup          String?
+  pageCount         Int
+  Audios            Audio[]
+  Images            Image[]
+  Videos            Video[]
+  storyCategory     String[]
+  audioInteraction  String?
+  videoInteraction  String?
+  urlInteraction    String?
+  motionInteraction String?
+  otherInteraction  String?
+  Module            Module?           @relation(fields: [moduleId], references: [id])
+  moduleId          String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  userSubmission    StorySubmission[]
+
+  @@index([moduleId])
+}
+
+model StorySubmission {
+  id             String    @id @default(uuid()) @map("_id")
+  submissionDate DateTime  @default(now())
+  storyTitle     String?
+  publishedAt    DateTime  @default(now())
+  storyText      String?
+  nOfCharacters  Int?
+  storyTheme     String?
+  wordCount      BigInt?
+  status         STATUS    @default(ACTIVE)
+  noOfSlideDone  Int       @default(0)
+  Images         Image[]
+  Videos         Video[]
+  Audios         Audio[]
+  timeTaken      Int       @default(0)
+  User           User      @relation(fields: [userId], references: [id])
+  userId         String
+  Story          Story     @relation(fields: [storyId], references: [id])
+  storyId        String
+  startTime      DateTime  @default(now())
+  endTime        DateTime?
+
+  @@unique([storyId, userId])
+  @@index([storyId])
+  @@index([userId])
+}
+
+model FlipBook {
+  id        String   @id @default(uuid()) @map("_id")
+  url       String
+  noOfPage  Int
+  moduleId  String
+  Module    Module   @relation(fields: [moduleId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Module {
+  id                 String            @id @default(uuid()) @map("_id")
+  moduleName         String
+  title              String?
+  overView           String?
+  whyNow             String?
+  subject            String?
+  topic              String?
+  moduleThumnailUrls Image[]
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  ageGroup           String?
+  skillsAquired      String[]
+  whenToBeLive       DateTime          @default(now())
+  notOfProducts      Int               @default(6)
+  status             STATUS            @default(ACTIVE)
+  language           LANGUAGE          @default(ENGLISH)
+  privacy            PRIVACY           @default(PUBLIC)
+  Rating             Rating[]
+  User               User[]
+  Favourite          FavouriteModule[]
+  introductionVedios Video[]
+  introductionAudios Audio[]
+  Stories            Story[]
+  Quiz               Quiz[]
+  FavouriteQuiz      FavouriteQuiz[]
+  Reel               Reel[]
+  attempts           ModuleAttempt[]
+  FlipBook           FlipBook[]
+  JigSaw             JigSaw[]
+}
+
+model ModuleAttempt {
+  id               String    @id @default(uuid()) @map("_id")
+  userId           String
+  moduleId         String
+  noOfProductsDone Int       @default(0)
+  products         String[]
+  startedAt        DateTime  @default(now())
+  endedAt          DateTime?
+  Module           Module    @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
+  @@index([userId])
+  @@index([moduleId])
+}
+
+model Reel {
+  id         String   @id @default(uuid()) @map("_id")
+  videoUrl   Video[]
+  moduleId   String
+  Module     Module   @relation(fields: [moduleId], references: [id])
+  toBeLiveAt DateTime
+  duration   Int
+  createAt   DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  status     STATUS   @default(ACTIVE)
+  language   LANGUAGE @default(ENGLISH)
+  privacy    PRIVACY  @default(PUBLIC)
+  Rating     Rating[]
+
+  @@index([moduleId])
+}
+
+model SocialMedia {
+  id        String   @id @default(uuid()) @map("_id")
+  x         String?
+  facebook  String?
+  youtube   String?
+  instagram String?
+  telegram  String?
+  linkedIn  String?
+  pinterest String?
+  whatsApp  String?
+  website   String?
+  User      User[]
+  Parent    Parent[]
+  School    School[]
+}
+
+model Quiz {
+  id               String             @id @default(uuid()) @map("_id")
+  quizName         String
+  quizTitle        String
+  quizDescription  String
+  quizThumbnail    Image[]
+  serialNoInModule Int                @default(0)
+  whenToBeLive     DateTime           @default(now())
+  quizDuration     Int
+  noOfQuestions    Int
+  subject          String
+  topic            String
+  questionTypes    QUESTIONTYPE[]
+  privacy          PRIVACY            @default(PUBLIC)
+  status           STATUS             @default(ACTIVE)
+  language         LANGUAGE           @default(ENGLISH)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  Attempts         QuizAttempt[]
+  Rating           Rating[]
+  Questions        Question[]
+  Module           Module?            @relation(fields: [moduleId], references: [id])
+  moduleId         String?
+  AnswerToQuestion AnswerToQuestion[]
+
+  @@index([moduleId])
+}
+
+model QuizAttempt {
+  id                     String             @id @default(uuid()) @map("_id")
+  timeTaken              Int                @default(0)
+  noOfQuestionsAttempted Int                @default(0)
+  noOfCorrectAnswers     Int                @default(0)
+  noOfIncorrectAnswers   Int                @default(0)
+  status                 STATUS             @default(ACTIVE)
+  score                  Int                @default(0)
+  attemptId              String
+  Quiz                   Quiz?              @relation(fields: [quizId], references: [id])
+  quizId                 String?
+  User                   User?              @relation(fields: [userId], references: [id])
+  userId                 String?
+  createdAt              DateTime           @default(now())
+  endedAt                DateTime?
+  answersToQuiz          AnswerToQuestion[]
+
+  @@index([userId])
+  @@index([quizId])
+}
+
+model Question {
+  id           String             @id @default(uuid()) @map("_id")
+  questionType QUESTIONTYPE
+  questionText String?
+  optionOne    String?
+  optionTwo    String?
+  optionThree  String?
+  optionFour   String?
+  questionNo   Int
+  difficulty   DIFFICULTY
+  marks        Int
+  timeLimit    Int                @default(60)
+  tags         String[]
+  hint         String?
+  relatedTopic String[]
+  explaination String?
+  gradeLevel   String?
+  correctAns   String?
+  imageUrls    Image[]
+  vedioUrls    Video[]
+  audioUrl     Audio[]
+  ratingNeeded Boolean            @default(false)
+  Ratings      Rating[]
+  Quiz         Quiz?              @relation(fields: [quizId], references: [id])
+  quizId       String?
+  Answers      AnswerToQuestion[]
+  created_at   DateTime           @default(now())
+
+  @@index([quizId])
+}
+
+model AnswerToQuestion {
+  id            String       @id @default(uuid()) @map("_id")
+  isCorrect     Boolean
+  userId        String
+  answer        String?
+  imageUrl      String?
+  vedioUrl      String?
+  audioUrl      String?
+  timeTaken     Int?
+  attempt       Int          @default(1)
+  marksScored   Int          @default(0)
+  User          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Question      Question?    @relation(fields: [questionId], references: [id])
+  questionId    String?
+  quizId        String?
+  createdAt     DateTime     @default(now())
+  QuizAttempt   QuizAttempt? @relation(fields: [quizAttemptId], references: [id])
+  quizAttemptId String?
+  Quiz          Quiz?        @relation(fields: [quizId], references: [id])
+
+  @@index([userId])
+  @@index([questionId])
+}
+
+model JigSaw {
+  id            String          @id @default(uuid()) @map("_id")
+  image         Image[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  module        Module          @relation(fields: [moduleId], references: [id])
+  moduleId      String
+  JigSawAttempt JigSawAttempt[]
+
+  @@index([moduleId])
+}
+
+model JigSawAttempt {
+  id         String      @id @default(uuid()) @map("_id")
+  user       User        @relation(fields: [userId], references: [id])
+  jigsaw     JigSaw      @relation(fields: [jigSawId], references: [id])
+  userId     String
+  jigSawId   String
+  difficulty DIFFICULTY?
+  quit       Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+
+  @@unique([userId, jigSawId])
+  @@index([userId])
+  @@index([jigSawId])
+}
+
+model SpotTheDifference {
+  id                       String                     @id @default(uuid()) @map("_id")
+  images                   Image[]
+  description              String
+  toBeLiveOn               DateTime                   @default(now())
+  createdAt                DateTime                   @default(now())
+  updatedAt                DateTime                   @updatedAt
+  differences              Json
+  SpotTheDifferenceAttempt SpotTheDifferenceAttempt[]
+}
+
+model SpotTheDifferenceAttempt {
+  id                  String            @id @default(uuid()) @map("_id")
+  spotTheDifference   SpotTheDifference @relation(fields: [spotTheDifferenceId], references: [id])
+  user                User              @relation(fields: [userId], references: [id])
+  userId              String
+  spotTheDifferenceId String
+  spottedDifferences  Json?
+  createdAt           DateTime          @default(now())
+  timeTaken           Int?
+
+  @@unique([userId, spotTheDifferenceId])
+  @@index([userId])
+  @@index([spotTheDifferenceId])
+}
+
+model LeaderAttempt {
+  id        String   @id @default(uuid()) @map("_id")
+  answers   Json
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  timeTaken Int?
+  userId    String
+  attemptId String
+}
+
+model PassCode {
+  id         String @id @default(uuid()) @map("_id")
+  passcode   String @unique
+  noOfPasses Int
+  status     STATUS @default(ACTIVE)
+}
+
+model PasscodeUser {
+  id         String   @id @default(uuid()) @map("_id")
+  passcodeId String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  @@unique([passcodeId, userId])
+}
+
+model FavouriteQuiz {
+  id     String  @id @default(uuid()) @map("_id")
+  quizId String?
+  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
+  Module Module? @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model FavouriteModule {
+  id       String  @id @default(uuid()) @map("_id")
+  moduleId String?
+  User     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String?
+  Module   Module? @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model FavouriteImage {
+  id      String  @id @default(uuid()) @map("_id")
+  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String?
+  Image   Image?  @relation(fields: [imageId], references: [id])
+  imageId String?
+
+  @@index([userId])
+}
+
+model FavouriteAudio {
+  id      String  @id @default(uuid()) @map("_id")
+  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String?
+  Audio   Audio?  @relation(fields: [audioId], references: [id])
+  audioId String?
+
+  @@index([userId])
+}
+
+model FavouriteVideo {
+  id      String  @id @default(uuid()) @map("_id")
+  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String?
+  Video   Video?  @relation(fields: [videoId], references: [id])
+  videoId String?
+
+  @@index([userId])
+}
+
+model EmailLogs {
+  id        String   @id @default(uuid()) @map("_id")
+  email     String
+  createdAt DateTime @default(now())
+}
+
+model Contact {
+  id        String   @id @default(uuid()) @map("_id")
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model Rating {
+  id         String    @id @default(uuid()) @map("_id")
+  userId     String?
+  moduleId   String?
+  ratingText String
+  created_at DateTime  @default(now())
+  rating     Int
+  Module     Module?   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Quiz       Quiz?     @relation(fields: [quizId], references: [id])
+  quizId     String?
+  Question   Question? @relation(fields: [questionId], references: [id])
+  questionId String?
+  Reel       Reel?     @relation(fields: [reelId], references: [id])
+  reelId     String?
+
+  @@index([userId])
+}
+
+enum AVATARTYPE {
+  ANIMAL
+  CARTOON
+  HUMAN
+}
+
+enum USERTYPE {
+  STUDENT
+  PARENT
+  TEACHER
+  ADMIN
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+  BISEXUAL
+  TRANSGENDER
+  PREFER_NOT_TO_SAY
+}
+
+enum LANGUAGE {
+  ENGLISH
+  FRENCH
+  CHINESE
+}
+
+enum STATUS {
+  ACTIVE
+  DISABLED
+}
+
+enum PRIVACY {
+  PUBLIC
+  PRIVATE
+  RESTRICTED
+}
+
+enum QUESTIONTYPE {
+  MCQ
+  TRUEFALSE
+  FILLUPSHORT
+  FILLUPLONG
+}
+
+enum DIFFICULTY {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum FREQUNCEY {
+  DAILY
+  WEEKLY
+  BIWEEKLY
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum PAYEE {
+  STUDENT
+  SCHOOL
+  DISTRICT
+}
+
+enum COMMUNICATION {
+  PHONE
+  EMAIL
+  WHATSAPP
+}
+
+enum IMAGE_CATEGORY {
+  BACKGROUND
+  CHARACTER
+  OBJECT
+}

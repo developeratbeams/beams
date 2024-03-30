@@ -1,0 +1,62 @@
+// Enums used for the project
+export enum AVATAR_TYPE {
+  ANIMAL = "ANIMAL",
+  CARTOON = "CARTOON",
+  HUMAN = "HUMAN",
+}
+
+export enum USER_TYPE {
+  STUDENT = "STUDENT",
+  PARENT = "PARENT",
+  TEACHER = "TEACHER",
+  ADMIN = "ADMIN",
+}
+
+export enum GENDER {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  BISEXUAL = "BISEXUAL",
+  TRANSGENDER = "TRANSGENDER",
+  PREFER_NOT_TO_SAY = "PREFER_NOT_TO_SAY",
+}
+
+export enum LANGUAGE {
+  ENGLISH = "ENGLISH",
+  FRENCH = "FRENCH",
+  CHINESE = "CHINESE",
+}
+
+export enum STATUS {
+  ACTIVE = "ACTIVE",
+  DISABLED = "DISABLED",
+}
+
+export enum PRIVACY {
+  PUBLIC = "PUBLIC",
+  PRIVATE = "PRIVATE",
+  RESTRICTED = "RESTRICTED",
+}
+
+export enum IMAGE_CATEGORY {
+  BACKGROUND = "BACKGROUND",
+  CHARACTER = "CHARACTER",
+  OBJECT = "OBJECT",
+}
+
+export enum COMMUNICATION {
+  PHONE = "PHONE",
+  EMAIL = "EMAIL",
+  WHATSAPP = "WHATSAPP",
+}
+
+export enum QUESTION_TYPE {
+  MCQ = "MCQ",
+  TRUEFALSE = "TRUEFALSE",
+  FILLUPSHORT = "FILLUPSHORT",
+  FILLUPLONG = "FILLUPLONG",
+}
+export enum DIFFICULTY {
+  EASY = "EASY",
+  MEDIUM = "MEDIUM",
+  HARD = "HARD",
+}

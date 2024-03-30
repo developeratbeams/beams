@@ -1,0 +1,13 @@
+/* css for flipbook embed */
+.canva-embed {
+    width: 90%;
+    height: 450px;
+
+}
+
+@media screen and (max-width:767px) {
+    .canva-embed {
+        height: 400px;
+        width: 100%;
+    }
+}
