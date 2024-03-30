@@ -71,7 +71,7 @@ export default function Report({ attempt }: ReportProps) {
         )}
         <Flex flexDirection={["column", "row"]} gap={"10px"}>
           <AnimatedButton
-            href="/home/beams-timeline"
+            href="/stories"
             bg={COLOR.GREEN}
             text=" Continue Your Adventure"
           />

@@ -89,7 +89,10 @@ export default async function Page() {
               alignItems={"flex-start"}
             >
               <Text>1. </Text>
-              <Text>Observe the pictures before each question carefully.</Text>
+              <Text>
+                Two thought-provoking questions will be asked. Your analytical
+                skills are key here.
+              </Text>
             </HStack>
             <HStack
               fontSize={["14px", "20px"]}
@@ -98,8 +101,8 @@ export default async function Page() {
             >
               <Text>2. </Text>
               <Text>
-                Use your critical thinking skills to respond thoughtfully and
-                creatively.
+                Respond thoughtfully and creatively. There are no right or wrong
+                answers.
               </Text>
             </HStack>
             <HStack
@@ -108,7 +111,9 @@ export default async function Page() {
               alignItems={"flex-start"}
             >
               <Text>3. </Text>
-              <Text>There are no right or wrong answers.</Text>
+              <Text>
+                Stand out with your answers for a chance at a special surprise!
+              </Text>
             </HStack>
             <HStack
               fontSize={["14px", "20px"]}
@@ -117,7 +122,7 @@ export default async function Page() {
             >
               <Text>4. </Text>
               <Text>
-                Earn points for participating and even more for top answers.{" "}
+                Earn points for participating and even more for top answers.
               </Text>
             </HStack>
             <HStack
@@ -127,8 +132,8 @@ export default async function Page() {
             >
               <Text>5. </Text>
               <Text>
-                Remember, if you go back, you can&lsquo;t resume where you left
-                off.{" "}
+                Remember, if you go back, you can&apos;t resume where you left
+                off.
               </Text>
             </HStack>
             <HStack
@@ -138,7 +143,7 @@ export default async function Page() {
             >
               <Text>6. </Text>
               <Text>
-                Check your email for notifications about your reward points.
+                Check your email for notifications about your awarded beams.
               </Text>
             </HStack>
           </Flex>{" "}
@@ -161,3 +166,10 @@ export default async function Page() {
     </>
   );
 }
+
+//
+//
+//
+//
+//
+//

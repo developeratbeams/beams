@@ -66,11 +66,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
           <MdArrowForwardIos />
         </motion.div>
         <AnimatePresence>
-          {!isClicked && (
-            <motion.div variants={textVariants} exit="exit">
-              {text}
-            </motion.div>
-          )}
+          <motion.div exit="exit">{text}</motion.div>
         </AnimatePresence>
       </Button>
     </Link>
