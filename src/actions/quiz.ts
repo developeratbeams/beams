@@ -117,11 +117,11 @@ export const saveQuestionAnswer = async ({
       });
       const payload = {
         sender: {
-          email: "mudasirpandith789@gmail.com",
+          email: "innbrieff@gmail.com",
           name: "Beams",
         },
         subject: "I got it.",
-        templateId: 16,
+        templateId: 4,
         params: {
           greeting: "This is my default greeting",
           headline: "This is my default headline",

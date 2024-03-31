@@ -4,6 +4,7 @@ import { getAuther } from "@/libs/getAuther";
 import { db } from "@/libs/db";
 import { revalidatePath } from "next/cache";
 import { saveModuleActivity } from "./module";
+import { sendEmailBrevo } from "./brewo";
 
 interface slideProps {
   elementData: string;
@@ -235,6 +236,38 @@ export const finalSubmit = async (storyId: string) => {
     }
     saveModuleActivity("23390cb6-5f5e-41d1-b637-ad9e42d179c5", "WRITER");
     revalidatePath(`/stories/${storyId}`);
+    const user = await db.user.findUnique({
+      where: { id: self?.id },
+      select: { email: true, firstName: true, lastName: true },
+    });
+    const payload = {
+      sender: {
+        email: "innbrieff@gmail.com",
+        name: "Beams",
+      },
+      subject: "I got it.",
+      templateId: 6,
+      params: {
+        greeting: "This is my default greeting",
+        headline: "This is my default headline",
+      },
+      messageVersions: [
+        {
+          to: [
+            {
+              email: user?.email,
+              name: `${user?.firstName} ${user?.lastName}`,
+            },
+          ],
+          params: {
+            firstName: user?.firstName,
+            storyTitle: "Magical Materials",
+          },
+          subject: `Your Story's Journey Begins! 📚`,
+        },
+      ],
+    };
+    await sendEmailBrevo({ payload });
   } catch (error) {
     throw error;
   }

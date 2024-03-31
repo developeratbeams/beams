@@ -7,7 +7,7 @@ export const CompleteModule = () => {
   const router = useRouter();
   const modal = useCompleteModuleModal();
   const handleClose = () => {
-    router.replace("/home");
+    modal.onClose();
   };
   return (
     <PopUp

@@ -31,11 +31,11 @@ export const saveAttempt = async (attemptId: string, answers: any) => {
     let payload = {};
     payload = {
       sender: {
-        email: "mudasirpandith789@gmail.com",
+        email: "innbrieff@gmail.com",
         name: "Beams",
       },
       subject: "I got it.",
-      templateId: 9,
+      templateId: 3,
       params: {
         greeting: "This is my default greeting",
         headline: "This is my default headline",
@@ -59,11 +59,11 @@ export const saveAttempt = async (attemptId: string, answers: any) => {
     await sendEmailBrevo({ payload });
     payload = {
       sender: {
-        email: "mudasirpandith789@gmail.com",
+        email: "innbrieff@gmail.com",
         name: "Beams",
       },
       subject: "I got it.",
-      templateId: 11,
+      templateId: 5,
       params: {
         greeting: "This is my default greeting",
         headline: "This is my default headline",

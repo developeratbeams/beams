@@ -97,13 +97,13 @@ export const changeUserDetails = async ({
         where: { id: self?.id },
         select: { email: true, firstName: true, lastName: true },
       });
-      const payload = {
+      let payload = {
         sender: {
-          email: "mudasirpandith789@gmail.com",
+          email: "innbrieff@gmail.com",
           name: "Beams",
         },
         subject: "I got it.",
-        templateId: 5,
+        templateId: 1,
         params: {
           greeting: "This is my default greeting",
           headline: "This is my default headline",
@@ -121,6 +121,34 @@ export const changeUserDetails = async ({
               headline: "Be Ready for Takeoff.",
             },
             subject: `Welcome ${user?.firstName} , Start Your Inspiring Journey 🌟`,
+          },
+        ],
+      };
+      await sendEmailBrevo({ payload });
+      payload = {
+        sender: {
+          email: "innbrieff@gmail.com",
+          name: "Beams",
+        },
+        subject: "I got it.",
+        templateId: 2,
+        params: {
+          greeting: "This is my default greeting",
+          headline: "This is my default headline",
+        },
+        messageVersions: [
+          {
+            to: [
+              {
+                email: user?.email,
+                name: `${user?.firstName} ${user?.lastName}`,
+              },
+            ],
+            params: {
+              firstName: user?.firstName,
+              headline: "Be Ready for Takeoff.",
+            },
+            subject: `Explore the Beams Universe: Where Knowledge Meets Fun! 🚀`,
           },
         ],
       };

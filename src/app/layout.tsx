@@ -8,6 +8,7 @@ import { AfterProductTourModal } from "@/popUps/AfterProductTour";
 import { HalfQuizModal } from "@/popUps/HalfQuiz";
 import Script from "next/script";
 import { WriterInstruction } from "@/popUps/WriterInstruction";
+import { CompleteModule } from "@/popUps/CompleteModule";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 export const metadata = {
@@ -60,7 +61,9 @@ export default function RootLayout({
           <AftergetStartedModal />
           <AfterProductTourModal />
           <HalfQuizModal />
+          <CompleteModule />
           <WriterInstruction />
+
           {/* Loading bar shown at top */}
           <NextTopLoader showSpinner={false} color="orange" height={5} />
           {children}

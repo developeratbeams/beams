@@ -29,7 +29,7 @@ export const saveJigsawAttempt = async ({
 }: body): Promise<string | undefined> => {
   try {
     const self = await getAuther();
-    console.log("object");
+
     if (!self || !self.id) new Error("Unauthorised access");
     const userId = self?.id;
 
@@ -77,11 +77,11 @@ export const saveJigsawAttempt = async ({
 
     const payload = {
       sender: {
-        email: "mudasirpandith789@gmail.com",
+        email: "innbrieff@gmail.com",
         name: "Beams",
       },
       subject: "I got it.",
-      templateId: 13,
+      templateId: 7,
       params: {
         greeting: "This is my default greeting",
         headline: "This is my default headline",
