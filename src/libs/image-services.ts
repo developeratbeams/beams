@@ -29,7 +29,7 @@ export const getImagesForStory = async (
         images = null;
       } else {
         const pageNo =
-          existingStory.noOfSlideDone === 17
+          existingStory.noOfSlideDone === 18
             ? existingStory.noOfSlideDone
             : Number(existingStory.noOfSlideDone) + 1;
 
