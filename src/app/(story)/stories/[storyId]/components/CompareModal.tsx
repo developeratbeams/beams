@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Quicksand } from "next/font/google";
-import { m } from "framer-motion";
 const quicksand = Quicksand({ subsets: ["latin"] });
 const ori = [
   "https://res.cloudinary.com/drlyyxqh9/image/upload/v1710605408/story-1/originals/image-1-65f55485ec021_hgfypr.webp",
@@ -95,7 +94,7 @@ function ComparisonModal({ isOpen, onClose, currentIndex }: any) {
           <ModalFooter justifyContent={"center"}>
             <Text>
               {" "}
-              {imageIndex === 0 ? "cover" : `Page ${imageIndex + 1}`}
+              {imageIndex === 0 ? "cover" : `Slide ${imageIndex}`}
             </Text>
           </ModalFooter>
         </ModalContent>
