@@ -37,44 +37,9 @@ export const saveJigsawAttempt = async ({
       where: { userId_jigSawId: { userId: String(userId), jigSawId } },
     });
     var score = 0;
-    if (alreadyDone) return undefined;
-    if (quit && typeof quit === "boolean") {
-      await db.jigSawAttempt.create({
-        data: {
-          userId: String(userId),
-          jigSawId,
-          quit,
-        },
-      });
-    } else {
-      if (difficulty === DIFFICULTY.EASY) score = 300;
-      else if (difficulty === DIFFICULTY.MEDIUM) score = 600;
-      else score = 900;
-      await db.jigSawAttempt.create({
-        data: {
-          userId: String(userId),
-          jigSawId,
-          difficulty,
-        },
-      });
-      const moduleAttempt = await db.moduleAttempt.findFirst({
-        where: {
-          moduleId: "23390cb6-5f5e-41d1-b637-ad9e42d179c5",
-          userId: self?.id,
-        },
-      });
-      if (!moduleAttempt?.products.some((prod) => prod === "JIGSAW")) {
-        await db.user.update({
-          where: {
-            id: self?.id,
-          },
-          data: {
-            totalScore: Number(self?.totalScore) + score,
-          },
-        });
-      }
-    }
-
+    if (difficulty === DIFFICULTY.EASY) score = 300;
+    else if (difficulty === DIFFICULTY.MEDIUM) score = 600;
+    else score = 900;
     const payload = {
       sender: {
         email: "innbrieff@gmail.com",
@@ -103,6 +68,41 @@ export const saveJigsawAttempt = async ({
       ],
     };
     await sendEmailBrevo({ payload });
+    if (alreadyDone) return undefined;
+    if (quit && typeof quit === "boolean") {
+      await db.jigSawAttempt.create({
+        data: {
+          userId: String(userId),
+          jigSawId,
+          quit,
+        },
+      });
+    } else {
+      await db.jigSawAttempt.create({
+        data: {
+          userId: String(userId),
+          jigSawId,
+          difficulty,
+        },
+      });
+      const moduleAttempt = await db.moduleAttempt.findFirst({
+        where: {
+          moduleId: "23390cb6-5f5e-41d1-b637-ad9e42d179c5",
+          userId: self?.id,
+        },
+      });
+      if (!moduleAttempt?.products.some((prod) => prod === "JIGSAW")) {
+        await db.user.update({
+          where: {
+            id: self?.id,
+          },
+          data: {
+            totalScore: Number(self?.totalScore) + score,
+          },
+        });
+      }
+    }
+
     saveModuleActivity("23390cb6-5f5e-41d1-b637-ad9e42d179c5", "JIGSAW");
     revalidatePath(`/home/jigsaw/${jigSawId}`);
     return "Saved";
