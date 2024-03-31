@@ -435,7 +435,7 @@ const CustomDrawer = ({
                         fontWeight={400}
                         textAlign={"center"}
                       >
-                        {index + 1}
+                        {index === 0 ? "Cover" : `Slide ${index}`}
                       </Text>
                     </Box>
                   ))}{" "}

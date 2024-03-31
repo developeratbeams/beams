@@ -29,34 +29,7 @@ export const saveAttempt = async (attemptId: string, answers: any) => {
       select: { email: true, firstName: true, lastName: true },
     });
     let payload = {};
-    payload = {
-      sender: {
-        email: "innbrieff@gmail.com",
-        name: "Beams",
-      },
-      subject: "I got it.",
-      templateId: 3,
-      params: {
-        greeting: "This is my default greeting",
-        headline: "This is my default headline",
-      },
-      messageVersions: [
-        {
-          to: [
-            {
-              email: user?.email,
-              name: `${user?.firstName} ${user?.lastName}`,
-            },
-          ],
-          params: {
-            firstName: user?.firstName,
-            headline: "Be Ready for Takeoff.",
-          },
-          subject: `Congratulations on Completing Your Module!`,
-        },
-      ],
-    };
-    await sendEmailBrevo({ payload });
+
     payload = {
       sender: {
         email: "innbrieff@gmail.com",
@@ -81,6 +54,34 @@ export const saveAttempt = async (attemptId: string, answers: any) => {
             headline: "Be Ready for Takeoff.",
           },
           subject: `Leadership Insights Unveiled!`,
+        },
+      ],
+    };
+    await sendEmailBrevo({ payload });
+    payload = {
+      sender: {
+        email: "innbrieff@gmail.com",
+        name: "Beams",
+      },
+      subject: "I got it.",
+      templateId: 3,
+      params: {
+        greeting: "This is my default greeting",
+        headline: "This is my default headline",
+      },
+      messageVersions: [
+        {
+          to: [
+            {
+              email: user?.email,
+              name: `${user?.firstName} ${user?.lastName}`,
+            },
+          ],
+          params: {
+            firstName: user?.firstName,
+            headline: "Be Ready for Takeoff.",
+          },
+          subject: `Congratulations on Completing Your Module!`,
         },
       ],
     };

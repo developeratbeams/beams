@@ -67,11 +67,12 @@ function Jigsaw({ jigSaw, user }: JigsawProps) {
       difficulty: level as DIFFICULTY,
       jigSawId: jigSaw.id as string,
     };
-    onKnowledgeModalOpen();
 
     // save the attempt
     saveJigsawAttempt(body)
-      .then(() => {})
+      .then(() => {
+        onKnowledgeModalOpen();
+      })
       .catch((err) => toast({ title: JSON.stringify(err), status: "error" }));
   };
   // func to handle quit
